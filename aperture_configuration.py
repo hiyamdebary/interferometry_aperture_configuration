@@ -130,61 +130,81 @@ def davies_configuration_1(m):
     lenslet_configurations = []
     offset_start = 1
     offset_convention = +1
+
     def add_line(davies_baseline, offset_start):
         A = offset_start
         B = offset_start + davies_baseline + offset_convention
         lenslet_configurations.append((A, B))
         offset_start += 1
         return offset_start
+
     for j in range(m-1):
         offset_start = add_line(4*m-4 - 2*j, offset_start)
+
     offset_start = add_line(4*m-2, offset_start)
+           
     for j in range(m-1):
         offset_start = add_line(2*m-3 - 2*j, offset_start)
+
     offset_start = add_line(4*m-1, offset_start)
     offset_start += m-1
     offset_start += m-1
     offset_start = add_line(4*m, offset_start)
+
     for j in range(m-1):
         offset_start = add_line(4*m-3 - 2*j, offset_start)
+
     offset_start += 1
+           
     for j in range(m-1):
         offset_start = add_line(2*m-2 - 2*j, offset_start)
+
     offset_start = add_line(2*m-1, offset_start)
     offset_start += m-1
     offset_start += m-1
     offset_start += 1
     offset_start += 1
+           
     return lenslet_configurations
 
 def davies_configuration_2(m):
     lenslet_configurations = []
     offset_start = 1
     offset_convention = +1
+
     def add_line(davies_baseline, offset_start):
         A = offset_start
         B = offset_start + davies_baseline + offset_convention
         lenslet_configurations.append((A, B))
         offset_start += 1
         return offset_start
+
     for j in range(m-1):
         offset_start = add_line(4*m-4 - 2*j, offset_start)
+
     offset_start = add_line(4*m-2, offset_start)
+           
     for j in range(m-1):
         offset_start = add_line(2*m-3 - 2*j, offset_start)
+
     offset_start = add_line(4*m-1, offset_start)
     offset_start += m-1
     offset_start += m-1
     offset_start = add_line(2*m-1, offset_start)
+
     for j in range(m-1):
         offset_start = add_line(4*m-3 - 2*j, offset_start)
+
     offset_start += 1
+           
     for j in range(m-1):
         offset_start = add_line(2*m-2 - 2*j, offset_start)
+
     offset_start += m-1
     offset_start += m-1
     offset_start += 1
     offset_start += 1
+
     return lenslet_configurations
 
 def output_configuration(table, t, s):
@@ -227,20 +247,14 @@ def lenslet_configuration(d, m):
             if d % 2 == 0:
                 if mod_m == 0:
                     if mod_d == 0:
-                        # Tableau 1
-                        # print("Tableau 1")
                         t = m//4
                         s = d//4
                         return output_configuration(table_1, t, s)
                     elif mod_d == 2:
-                        # Tableau 2
-                        # print("Tableau 2")
                         t = m//4
                         s = (d-2)//4
                         return output_configuration(table_2, t, s)
                 elif mod_m == 3:
-                    # Tableau 5
-                    #print("Tableau 5")
                     t = (m-3)//4
                     s = d//2
                     return output_configuration(table_5, t, s)
@@ -250,20 +264,14 @@ def lenslet_configuration(d, m):
             else:
                 if mod_m == 0:
                     if mod_d == 1:
-                        # Tableau 4
-                        # print("Tableau 4")
                         t = m//4
                         s = (d-1)//4
                         return output_configuration(table_4, t, s)
                     if mod_d == 3:
-                        # Tableau 3
-                        # print("Tableau 3")
                         t = m//4
                         s = (d+1)//4
                         return output_configuration(table_3, t, s)
                 elif mod_m == 1:
-                    # Tableau 6
-                    # print("Tableau 6")
                     t = (m-1)//4
                     s = (d+1)//2
                     return output_configuration(table_6, t, s)
